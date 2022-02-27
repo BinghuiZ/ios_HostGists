@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4BAF3A76EAF2E45344746B2D /* Pods_HotGistsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD20A6648A390F8E179E4D7 /* Pods_HotGistsTests.framework */; };
+		54AD319527CA813600E25A90 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD319427CA813600E25A90 /* Gist.swift */; };
+		54AD319727CA873500E25A90 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD319627CA873500E25A90 /* MainViewModel.swift */; };
 		54F5451627CA76E900BD22A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451527CA76E900BD22A8 /* AppDelegate.swift */; };
 		54F5451827CA76E900BD22A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451727CA76E900BD22A8 /* SceneDelegate.swift */; };
 		54F5451A27CA76E900BD22A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451927CA76E900BD22A8 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		07479E2FE5B83390771A0079 /* Pods-HotGistsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotGistsTests.release.xcconfig"; path = "Target Support Files/Pods-HotGistsTests/Pods-HotGistsTests.release.xcconfig"; sourceTree = "<group>"; };
 		4A670C5B9ACF74492ABFBC24 /* Pods_HotGists.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotGists.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAF82BF5A8D3803142BB209 /* Pods-HotGists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotGists.debug.xcconfig"; path = "Target Support Files/Pods-HotGists/Pods-HotGists.debug.xcconfig"; sourceTree = "<group>"; };
+		54AD319427CA813600E25A90 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
+		54AD319627CA873500E25A90 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		54F5451227CA76E900BD22A8 /* HotGists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotGists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F5451527CA76E900BD22A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54F5451727CA76E900BD22A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		54AD319227CA7D4A00E25A90 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				54AD319627CA873500E25A90 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 		54AD319327CA7D5300E25A90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				54AD319427CA813600E25A90 /* Gist.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,10 +453,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54AD319527CA813600E25A90 /* Gist.swift in Sources */,
 				54F5451A27CA76E900BD22A8 /* ViewController.swift in Sources */,
 				54F5451627CA76E900BD22A8 /* AppDelegate.swift in Sources */,
 				54F5451827CA76E900BD22A8 /* SceneDelegate.swift in Sources */,
 				54F5454627CA782F00BD22A8 /* MainViewController.swift in Sources */,
+				54AD319727CA873500E25A90 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

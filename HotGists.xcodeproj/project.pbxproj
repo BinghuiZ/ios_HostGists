@@ -10,6 +10,8 @@
 		4BAF3A76EAF2E45344746B2D /* Pods_HotGistsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD20A6648A390F8E179E4D7 /* Pods_HotGistsTests.framework */; };
 		54AD319527CA813600E25A90 /* Gist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD319427CA813600E25A90 /* Gist.swift */; };
 		54AD319727CA873500E25A90 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD319627CA873500E25A90 /* MainViewModel.swift */; };
+		54AD319927CB9EB100E25A90 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54AD319827CB9EB100E25A90 /* TableViewCell.swift */; };
+		54B37FA527CD2B7D006CA17B /* DetailPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B37FA427CD2B7D006CA17B /* DetailPageViewController.swift */; };
 		54F5451627CA76E900BD22A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451527CA76E900BD22A8 /* AppDelegate.swift */; };
 		54F5451827CA76E900BD22A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451727CA76E900BD22A8 /* SceneDelegate.swift */; };
 		54F5451A27CA76E900BD22A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F5451927CA76E900BD22A8 /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 		4FAF82BF5A8D3803142BB209 /* Pods-HotGists.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotGists.debug.xcconfig"; path = "Target Support Files/Pods-HotGists/Pods-HotGists.debug.xcconfig"; sourceTree = "<group>"; };
 		54AD319427CA813600E25A90 /* Gist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gist.swift; sourceTree = "<group>"; };
 		54AD319627CA873500E25A90 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		54AD319827CB9EB100E25A90 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		54B37FA427CD2B7D006CA17B /* DetailPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPageViewController.swift; sourceTree = "<group>"; };
 		54F5451227CA76E900BD22A8 /* HotGists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotGists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54F5451527CA76E900BD22A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54F5451727CA76E900BD22A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 			isa = PBXGroup;
 			children = (
 				54F5454527CA782F00BD22A8 /* MainViewController.swift */,
+				54AD319827CB9EB100E25A90 /* TableViewCell.swift */,
+				54B37FA427CD2B7D006CA17B /* DetailPageViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -453,11 +459,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54B37FA527CD2B7D006CA17B /* DetailPageViewController.swift in Sources */,
 				54AD319527CA813600E25A90 /* Gist.swift in Sources */,
 				54F5451A27CA76E900BD22A8 /* ViewController.swift in Sources */,
 				54F5451627CA76E900BD22A8 /* AppDelegate.swift in Sources */,
 				54F5451827CA76E900BD22A8 /* SceneDelegate.swift in Sources */,
 				54F5454627CA782F00BD22A8 /* MainViewController.swift in Sources */,
+				54AD319927CB9EB100E25A90 /* TableViewCell.swift in Sources */,
 				54AD319727CA873500E25A90 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 class MainViewModel {
+    
+    public let gists : PublishSubject<[Gist]> = PublishSubject()
     
     public func requestData() {
         if let url = URL(string: "https://api.github.com/gists/public?since") {
@@ -22,6 +26,8 @@ class MainViewModel {
                         let decoder = JSONDecoder()
                         let values = try decoder.decode([Gist].self, from: data)
                         print(values)
+                        self.gists.onNext(values)
+                        self.gists.onCompleted()
                     } catch {
                         print(error)
                     }

@@ -51,7 +51,9 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        let vc = DetailPageViewController()
+        vc.gist = gists[indexPath.row]
+        self.present(vc, animated: true)
     }
 }
 

@@ -19,6 +19,7 @@ class TableViewCell: UITableViewCell {
     private let urlLbl: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .black
+        lbl.numberOfLines = 2
         return lbl
     }()
     
@@ -30,14 +31,10 @@ class TableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-//        self.contentView.backgroundColor = .gray
-//        self.contentView.layer.cornerRadius = 10
-        
         let stackView = UIStackView()
         stackView.alignment = .center
         stackView.axis = .vertical
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         stackView.spacing = 4
         stackView.backgroundColor = .gray
         stackView.layer.cornerRadius = 10
@@ -50,6 +47,10 @@ class TableViewCell: UITableViewCell {
         stackView.addArrangedSubview(idLbl)
         stackView.addArrangedSubview(urlLbl)
         stackView.addArrangedSubview(fileLbl)
+        urlLbl.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(8)
+            make.right.equalToSuperview().offset(-8)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -57,14 +58,14 @@ class TableViewCell: UITableViewCell {
     }
     
     override func prepareForReuse() {
-        idLbl.text = ""
-        urlLbl.text = ""
-        fileLbl.text = ""
+        idLbl.text = "ID: "
+        urlLbl.text = "URL: "
+        fileLbl.text = "FileName: "
     }
     
     func setUpData(_ gist: Gist) {
-        idLbl.text = gist.id
-        urlLbl.text = gist.url
-        fileLbl.text = gist.files.array.first?.filename ?? ""
+        idLbl.text = "ID: \(gist.id)"
+        urlLbl.text = "URL: \(gist.url)"
+        fileLbl.text = "FileName: \(gist.files.array.first?.filename ?? "")"
     }
 }

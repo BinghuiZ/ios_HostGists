@@ -17,6 +17,12 @@ class DetailPageViewController: UIViewController {
     var mainViewModel = MainViewModel()
     let disposeBag = DisposeBag()
     
+    private let userLbl: UILabel = {
+       let lbl = UILabel()
+        lbl.textColor = .label
+        return lbl
+    }()
+    
     private let fileNameLbl: UILabel = {
        let lbl = UILabel()
         lbl.textColor = .label
@@ -35,9 +41,14 @@ class DetailPageViewController: UIViewController {
     func initUI() {
         self.view.backgroundColor = .systemBackground
         
+        self.view.addSubview(userLbl)
         self.view.addSubview(fileNameLbl)
         fileNameLbl.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        userLbl.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(fileNameLbl.snp.top).offset(-8)
         }
     }
     
@@ -57,7 +68,8 @@ class DetailPageViewController: UIViewController {
     }
     
     func updateUI() {
-        fileNameLbl.text = detail?.files.array.first?.filename
+        userLbl.text = "User: \(detail?.owner.login ?? "")"
+        fileNameLbl.text = "FileName: \(detail?.files.array.first?.filename ?? "")"
     }
     
 }

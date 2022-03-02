@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
+protocol CustomCellDelegate {
+    func favouriteButtonClicked(id: String)
+}
+
 class TableViewCell: UITableViewCell {
+    
+    var delegate: CustomCellDelegate?
+    var gist: GistUIModel?
     
     private let idLbl: UILabel = {
         let lbl = UILabel()
@@ -29,6 +36,13 @@ class TableViewCell: UITableViewCell {
         return lbl
     }()
     
+    private let favouriteImageView: UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(systemName: "heart")
+        iv.isUserInteractionEnabled = true
+        return iv
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let stackView = UIStackView()
@@ -47,10 +61,23 @@ class TableViewCell: UITableViewCell {
         stackView.addArrangedSubview(idLbl)
         stackView.addArrangedSubview(urlLbl)
         stackView.addArrangedSubview(fileLbl)
+        stackView.addArrangedSubview(favouriteImageView)
         urlLbl.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(8)
             make.right.equalToSuperview().offset(-8)
         }
+        favouriteImageView.snp.makeConstraints { make in
+            make.size.equalTo(24)
+        }
+        
+        favouriteImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(favouriteButtonClicked)))
+    }
+    
+    @objc func favouriteButtonClicked() {
+        if let isFavourite = gist?.isFavouriteItem {
+            favouriteImageView.image = UIImage(systemName: !isFavourite ? "heart.fill" : "heart")
+        }
+        delegate?.favouriteButtonClicked(id: gist?.gist.id ?? "")
     }
     
     required init?(coder: NSCoder) {
@@ -63,9 +90,12 @@ class TableViewCell: UITableViewCell {
         fileLbl.text = "FileName: "
     }
     
-    func setUpData(_ gist: Gist) {
-        idLbl.text = "ID: \(gist.id)"
-        urlLbl.text = "URL: \(gist.url)"
-        fileLbl.text = "FileName: \(gist.files.array.first?.filename ?? "")"
+    func setUpData(_ gist: GistUIModel) {
+        self.gist = gist
+        
+        idLbl.text = "ID: \(gist.gist.id)"
+        urlLbl.text = "URL: \(gist.gist.url)"
+        fileLbl.text = "FileName: \(gist.gist.files.array.first?.filename ?? "")"
+        favouriteImageView.image = UIImage(systemName: gist.isFavouriteItem ? "heart.fill" : "heart")
     }
 }

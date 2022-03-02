@@ -78,5 +78,10 @@ struct Gist: Decodable {
             case login
         }
     }
-    
+
+}
+
+struct GistUIModel {
+    let gist: Gist
+    var isFavouriteItem: Bool = false
 }

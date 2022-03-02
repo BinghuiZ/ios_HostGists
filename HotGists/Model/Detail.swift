@@ -79,3 +79,8 @@ struct Detail: Decodable {
         }
     }
 }
+
+struct DetailUIModel {
+    let detail: Detail
+    var isFavouriteItem: Bool = false
+}

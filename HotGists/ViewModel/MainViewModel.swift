@@ -11,8 +11,10 @@ import RxCocoa
 
 class MainViewModel {
     
-    public let gists: PublishSubject<[Gist]> = PublishSubject()
-    public let detail: PublishSubject<Detail> = PublishSubject()
+    let USER_DEFAULT_FAVOURITE_ITEMS_KEY = "FAVOURITE_ITEMS"
+    
+    public let gists: PublishSubject<[GistUIModel]> = PublishSubject()
+    public let detail: PublishSubject<DetailUIModel> = PublishSubject()
     
     public func requestData() {
         if let url = URL(string: "https://api.github.com/gists/public?since") {
@@ -27,7 +29,10 @@ class MainViewModel {
                     do {
                         let decoder = JSONDecoder()
                         let values = try decoder.decode([Gist].self, from: data)
-                        self.gists.onNext(values)
+                        let mappedValues = values.map { gist in
+                            return GistUIModel(gist: gist, isFavouriteItem: self.getFavourite(id: gist.id))
+                        }
+                        self.gists.onNext(mappedValues)
                         self.gists.onCompleted()
                     } catch {
                         print(error)
@@ -51,7 +56,8 @@ class MainViewModel {
                     do {
                         let decoder = JSONDecoder()
                         let values = try decoder.decode([Detail].self, from: data)
-                        self.detail.onNext(values.first!)
+                        let uiModel = DetailUIModel(detail: values.first!, isFavouriteItem: self.getFavourite(id: values.first!.id))
+                        self.detail.onNext(uiModel)
                         self.detail.onCompleted()
                     } catch {
                         print(error)
@@ -60,6 +66,26 @@ class MainViewModel {
                 }
             }.resume()
         }
+    }
+    
+    func updateFavourite(id: String) {
+        let defaults = UserDefaults.standard
+        let optionalIds = defaults.object(forKey: USER_DEFAULT_FAVOURITE_ITEMS_KEY) as? [String:Bool]
+        var map = optionalIds ?? [String:Bool]()
+        if let liked = map[id] {
+            map[id] = !liked
+        } else {
+            map[id] = true
+        }
+        defaults.set(map, forKey: USER_DEFAULT_FAVOURITE_ITEMS_KEY)
+    }
+    
+    func getFavourite(id: String) -> Bool {
+         if let ids = UserDefaults.standard.object(forKey: USER_DEFAULT_FAVOURITE_ITEMS_KEY) as? [String:Bool],
+            let liked = ids[id] {
+             return liked
+         }
+        return false
     }
     
 }

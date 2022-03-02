@@ -11,8 +11,8 @@ import RxSwift
 
 class DetailPageViewController: UIViewController {
     
-    var gist: Gist?
-    var detail: Detail?
+    var gist: GistUIModel?
+    var detail: DetailUIModel?
     
     var mainViewModel = MainViewModel()
     let disposeBag = DisposeBag()
@@ -34,7 +34,7 @@ class DetailPageViewController: UIViewController {
         initUI()
         setUpBinding()
         if let gist = gist {
-            mainViewModel.requestDetail(user: gist.owner.login)
+            mainViewModel.requestDetail(user: gist.gist.owner.login)
         }
     }
     
@@ -68,8 +68,8 @@ class DetailPageViewController: UIViewController {
     }
     
     func updateUI() {
-        userLbl.text = "User: \(detail?.owner.login ?? "")"
-        fileNameLbl.text = "FileName: \(detail?.files.array.first?.filename ?? "")"
+        userLbl.text = "User: \(detail?.detail.owner.login ?? "")"
+        fileNameLbl.text = "FileName: \(detail?.detail.files.array.first?.filename ?? "")"
     }
     
 }

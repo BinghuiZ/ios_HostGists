@@ -12,7 +12,7 @@ import RxSwift
 class MainViewController: UIViewController {
     
     var mainViewModel = MainViewModel()
-    var gists = [Gist]()
+    var gists = [GistUIModel]()
     
     let tableView = UITableView()
     let disposeBag = DisposeBag()
@@ -71,8 +71,13 @@ extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! TableViewCell
         cell.setUpData(gists[indexPath.row])
+        cell.delegate = self
         return cell
     }
-    
-    
+}
+
+extension MainViewController: CustomCellDelegate {
+    func favouriteButtonClicked(id: String) {
+        mainViewModel.updateFavourite(id: id)
+    }
 }
